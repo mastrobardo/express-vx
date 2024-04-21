@@ -144,8 +144,6 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
     }
   });
 
-  // ... other code ...
-
   /**
    * @swagger
    * /listings/{id}:
