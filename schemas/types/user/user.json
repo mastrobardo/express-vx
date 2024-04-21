@@ -1,0 +1,51 @@
+{
+    "$id": "https://vx.scnd.com/schemas/types/user",
+    "title": "User",
+    "type": "object",
+    "properties": {
+        "schema": {
+            "type": "string",
+            "pattern": "https://vx.scnd.com/schemas/types/hub/(clan|org)"
+        },
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "firstName": {
+            "type": "string",
+            "description": "The user's first name."
+        },
+        "lastName": {
+            "type": "string",
+            "description": "The user's last name."
+        },
+        "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The user's email address."
+        },
+        "accountType": {
+            "type": "boolean",
+            "description": "A boolean indicating if the user has an account type."
+        },
+        "businessType": {
+            "type": "boolean",
+            "description": "A boolean indicating if the user has a business type."
+        },
+        "invites": {
+            "type": "array",
+            "items": {
+                "$ref": "https://vx.scnd.com/schemas/types/invite"
+            },
+            "description": "An array of invite objects."
+        }
+    },
+    "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "accountType",
+        "businessType"
+    ],
+    "additionalProperties": false
+}

@@ -1,0 +1,12 @@
+curl -X POST https://example.com/hubs/ \
+-H "Content-Type: application/json" \
+-d '{
+    "schema": "https://vx.scnd.com/schemas/types/hub/hub",
+    "data": {
+        "schema": "https://vx.scnd.com/schemas/types/hub/clan",
+        "id": "123e4567-e89b-12d3-a456-426614174099",
+        "clan_base_data": {
+            "name": "Example Clan Name"
+        }
+    }
+}'

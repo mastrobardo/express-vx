@@ -17,7 +17,6 @@ function loadSchemas(dir) {
       } else if (path.extname(file) === '.json') {
         const schema = require(fullPath);
         schemas[schema.$id] = schema;
-        console.log('adding => ', schema.$id)
         ajv.addSchema(schema, schema.$id);
       }
     });

@@ -7,7 +7,7 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
   function validateSchemaGroup(expectedGroup) {
     return function (req, res, next) {
       const { schema } = req.body;
-      console.log(loadedSchemas);
+      // console.log(loadedSchemas);
       let schemaObject = null;
       for (const key in loadedSchemas) {
         if (
@@ -20,7 +20,12 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
       }
 
       if (!schemaObject) {
-        return res.status(404).send({ message: `Schema not found: ${schema}` });
+        return res.status(404).send({
+          error: {
+            key: 'listings.error.404_schema_not_found',
+            fallback: `Schema not found: ${schema}`
+          }
+        });
       }
 
       if (schemaObject.group !== expectedGroup) {
@@ -77,32 +82,56 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
    */
   router.post("/", validateSchemaGroup("profiles"), async (req, res) => {
     const { schema, ...data } = req.body;
-
+  
     if (!schema) {
       return res.status(400).send({ message: "Schema URL is missing." });
     }
-
+  
     const validate = ajv.getSchema(schema);
     if (!validate) {
-      return res.status(404).send({ message: `Schema not found: ${schema}` });
+      return res.status(400).send({
+        error: {
+          key: 'listings.error.400_schema_url_missing',
+          fallback: 'Schema URL is missing.'
+        }
+      });
     }
-
-    console.log(data);
-
+  
     if (!validate(req.body)) {
-      return res
-        .status(400)
-        .send({ message: "Validation failed", errors: validate.errors });
+      return res.status(400).send({
+        error: {
+          key: 'listings.error.400_validation_failed',
+          fallback: 'Validation failed',
+          errors: validate.errors
+        }
+      });
     }
-
+  
     try {
+      const existingDocument = await GenericModel.findOne({ "data.id": data.id });
+      if (existingDocument) {
+        return res.status(409).send({
+          error: {
+            key: 'listings.error.409_document_already_exists',
+            fallback: 'Document already exists'
+          }
+        });
+      }
+  
       const document = new GenericModel({ schema, data });
       await document.save();
       res.send({ message: "Data is valid and saved successfully", document });
     } catch (error) {
-      res.status(500).send({ message: "Failed to save the document", error });
+      res.status(500).send({
+        error: {
+          key: 'listings.error.500_failed_post',
+          fallback: 'Failed to save the document',
+          error
+        }
+      });
     }
   });
+  
 
   /**
    * @swagger
@@ -140,7 +169,12 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
       res.json(listingData);
     } catch (error) {
       console.error("Failed to retrieve listings:", error);
-      res.status(500).send({ message: "Failed to retrieve listings" });
+      return res.status(500).send({
+        error: {
+          key: 'listings.error.failed_get',
+          fallback: 'Listing not found'
+        }
+      });
     }
   });
 
@@ -175,7 +209,13 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
       res.send({ message: "Listing successfully deleted" });
     } catch (error) {
       console.error("Error deleting listing:", error);
-      res.status(500).send({ message: "Server error" });
+      res.status(500).send({
+        error: {
+          key: 'listings.error.server_error',
+          fallback: 'Server error',
+          error
+        }
+      });
     }
   });
 
@@ -224,13 +264,22 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
 
     const validate = ajv.getSchema(schema);
     if (!validate) {
-      return res.status(404).send({ message: `Schema not found: ${schema}` });
+      return res.status(404).send({
+        error: {
+          key: 'listings.error.404_schema_not_found',
+          fallback: `Schema not found: ${schema}`
+        }
+      });
     }
 
     if (!validate(updateData)) {
-      return res
-        .status(400)
-        .send({ message: "Validation failed", errors: validate.errors });
+      return res.status(400).send({
+        error: {
+          key: 'listings.error.400_validation_failed',
+          fallback: 'Validation failed',
+          errors: validate.errors
+        }
+      });
     }
 
     try {
@@ -245,7 +294,13 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
       res.json({ message: "Listing successfully updated", updatedDocument });
     } catch (error) {
       console.error("Error updating listing:", error);
-      res.status(500).send({ message: "Server error" });
+      res.status(500).send({
+        error: {
+          key: 'listings.error.server_error',
+          fallback: 'Server error',
+          error
+        }
+      });
     }
   });
 

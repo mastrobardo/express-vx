@@ -1,0 +1,29 @@
+{
+    "$id": "https://vx.scnd.com/schemas/types/invite",
+    "title": "Invite",
+    "type": "object",
+    "properties": {
+        "senderID": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The unique identifier for the sender of the invite."
+        },
+        "receiverID": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The unique identifier for the receiver of the invite."
+        },
+        "hub_Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The unique identifier for the hub to which the invite is associated."
+        },
+        "status": {
+            "type": "string",
+            "enum": ["sent", "accepted", "rejected"],
+            "description": "The current status of the invite."
+        }
+    },
+    "required": ["senderID", "receiverID", "hub_Id", "status"],
+    "additionalProperties": false
+}

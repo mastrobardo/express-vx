@@ -1,5 +1,6 @@
 // routes/hubs.js
 const express = require("express");
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = (ajv, GenericModel) => {
   const router = express.Router();
@@ -37,27 +38,52 @@ module.exports = (ajv, GenericModel) => {
    *         description: Failed to save the document.
    */
   router.post("/", async (req, res) => {
-    const validate = ajv.getSchema(schemaId);
-
-    if (!validate) {
-      return res.status(404).send({ message: `Schema not found: ${schemaId}` });
-    }
-
-    if (!validate(req.body)) {
-      return res
-        .status(400)
-        .send({ message: "Validation failed", errors: validate.errors });
-    }
-
-    try {
-      const document = new GenericModel({ schema: schemaId, data: req.body });
-      await document.save();
-
-      res.send({ message: "Data is valid and saved successfully", document });
-    } catch (error) {
-      res.status(500).send({ message: "Failed to save the document", error });
-    }
-  });
+      let { schema, ...data } = req.body;
+  
+      if (!schema) {
+        return res.status(400).send({
+          error: { key: 'hubs.error.400_schema_missing', fallback: 'Schema is missing.' }
+        });
+      }
+  
+      const validate = ajv.getSchema(schema);
+  
+      if (!validate) {
+        return res.status(404).send({
+          error: { key: 'hubs.error.400_schema_not_found', fallback: `Schema not found: ${schema}` }
+        });
+      }
+  
+      console.log(schema);
+  
+      if (!data.id) {
+          data = { ...data, id: uuidv4() };
+      }
+  
+      if (!validate(req.body)) {
+        return res.status(400).send({
+          error: { key: 'hubs.error.400_validation_failed', fallback: 'Validation failed', errors: validate.errors }
+        });
+      }
+  
+      try {
+          const existingDocument = await GenericModel.findOne({ "data.id": data.id, schema: schema });
+          if (existingDocument) {
+            return res.status(409).send({
+              error: { key: 'hubs.error.409_duplicate_id', fallback: 'Document with the same ID already exists' }
+          });
+          }
+  
+          const document = new GenericModel({ schema: schema, data: data });
+          await document.save();
+  
+          res.send({ message: "Data is valid and saved successfully", document });
+      } catch (error) {
+        res.status(500).send({
+          error: { key: 'hubs.error.500_failed_post', fallback: 'Failed to save the document', error }
+        });
+      }
+  });  
 
   /**
    * @swagger
@@ -92,7 +118,9 @@ module.exports = (ajv, GenericModel) => {
       res.json(hubs);
     } catch (error) {
       console.error("Failed to retrieve hubs:", error);
-      res.status(500).send({ message: "Failed to retrieve hubs" });
+      res.status(500).send({
+        error: { key: 'hubs.error.500_failed_get', fallback: 'Failed to retrieve hubs', error }
+      });
     }
   });
 
@@ -132,14 +160,16 @@ module.exports = (ajv, GenericModel) => {
 
     const validate = ajv.getSchema(schemaId);
     if (!validate) {
-      return res.status(404).send({ message: `Schema not found: ${schemaId}` });
+      return res.status(404).send({
+        error: { key: 'hubs.400_error.schema_not_found', fallback: `Schema not found: ${schemaId}` }
+      });
     }
 
     if (!validate(req.body)) {
       return res.status(400).send({
-        message: "Validation failed",
-        errors: validate.errors,
-      });
+        error: { key: 'hubs.error.400_validation_failed', fallback: 'Validation failed', errors: validate.errors }
+    });
+    
     }
 
     try {
@@ -149,17 +179,20 @@ module.exports = (ajv, GenericModel) => {
       if (result) {
         res.json(result);
       } else {
-        res.status(404).send({ message: "Hub not found" });
+        res.status(404).send({
+          error: { key: 'hubs.error.404_hub_not_found', fallback: 'Hub not found' }
+      });
       }
     } catch (error) {
       console.error("Error updating hub:", error);
-      res.status(500).send({ message: "Failed to update hub", error });
+      res.status(500).send({
+        error: { key: 'hubs.error.500_failed_patch', fallback: 'Failed to update hub', error }
+      });
     }
   });
 
 
   //should we validate id is an hub?
-
   /**
    * @swagger
    * /hubs/{id}:
@@ -189,11 +222,15 @@ module.exports = (ajv, GenericModel) => {
         if (result) {
             res.send({ message: 'Hub deleted successfully' });
         } else {
-            res.status(404).send({ message: 'Hub not found' });
+          res.status(404).send({
+            error: { key: 'hubs.error.404_hub_not_found', fallback: 'Hub not found' }
+        });
         }
     } catch (error) {
         console.error('Error deleting hub:', error);
-        res.status(500).send({ message: 'Failed to delete hub', error });
+        res.status(500).send({
+          error: { key: 'hubs.error.500_internal_error', fallback: 'Failed to delete hub', error }
+        });
     }
   });
 

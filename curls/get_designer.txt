@@ -1,0 +1,1 @@
+curl --location 'http://localhost:3000/listings/https%3A%2F%2Fvx.scnd.com%2Fschemas%2Ftypes%2Fvendor%2Fprofile%2Fdesigner'

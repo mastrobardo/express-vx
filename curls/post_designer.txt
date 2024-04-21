@@ -1,0 +1,28 @@
+curl --location 'http://localhost:3000/listings' \
+--header 'Content-Type: application/json' \
+--data '{
+    "schema": "https://vx.scnd.com/schemas/types/vendor/profile/designer",
+    "id": "123e4567-e89b-12d3-a456-426614174001",
+    "base_data": {
+        "title": "Senior UX Designer",
+        "description": "Experienced UX Designer with a focus on user-centered design principles and a strong portfolio of successful projects.",
+        "skills": ["User Research", "Prototyping", "UI Design"],
+        "image_id": "c2a1b89e-c2a5-48cb-9f0b-e5c682fe9a5f",
+        "categories": [
+            "e0a1b2c3-d4f5-6789-abcd-ef0123456789",
+            "abcd1234-5678-90ef-abcd-1234567890ef"
+        ]
+    },
+    "salary_expectations": {
+        "daily_rate": {
+            "amount": 500,
+            "currency": "USD"
+        },
+        "hide_rate": false,
+        "design_level": {
+            "design": 4,
+            "atmosphere": 3
+        }
+    }
+}
+'

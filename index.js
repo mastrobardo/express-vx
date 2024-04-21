@@ -15,17 +15,15 @@ function loadSchemasRecursively(dir) {
     const stat = fs.statSync(fullPath);
 
     if (stat && stat.isDirectory()) {
-      // It's a directory, recurse into it
       schemas = {
         ...schemas,
-        ...loadSchemasRecursively(fullPath) // Merge with schemas from subdirectories
+        ...loadSchemasRecursively(fullPath)
       };
     } else if (path.extname(fullPath) === '.json') {
-      // It's a JSON file, read and parse it
       try {
         const content = fs.readFileSync(fullPath, 'utf-8');
         const json = JSON.parse(content);
-        const schemaName = path.relative(__dirname, fullPath); // Relative path as key
+        const schemaName = path.relative(__dirname, fullPath);
         schemas[schemaName] = json;
       } catch (error) {
         console.error(`Error reading or parsing JSON Schema from ${fullPath}:`, error);
@@ -37,7 +35,6 @@ function loadSchemasRecursively(dir) {
 }
 
 const loadedSchemas = loadSchemasRecursively(path.join(__dirname, 'schemas'));
-console.log(loadedSchemas, "loadedSchemas")
 
 const swaggerOptions = {
   definition: {
@@ -56,13 +53,14 @@ const swaggerOptions = {
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
-
-
 const app = express();
 
 const port = 3000;
 
-mongoose.connect('mongodb://localhost:27017/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true })
+// const userSchema = require('./schemas/types/user/user.json');
+// ajv.addSchema(userSchema, userSchema.$id);
+
+mongoose.connect('mongodb://localhost:27017/expressvx', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('Could not connect to MongoDB:', err));
 
