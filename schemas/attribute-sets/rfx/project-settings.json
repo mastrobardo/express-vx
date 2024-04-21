@@ -1,0 +1,23 @@
+{
+    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/project-settings",
+    "type": "object",
+    "properties": {
+        "offers_end_date": {
+            "$ref": "https://vx.scnd.com/schemas/base/datetime#/date"
+        },
+        "maximum_number_of_bids": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "visibility": {
+            "enum": [
+                "public",
+                "private"
+            ]
+        }
+    },
+    "required": [
+        "visibility"
+    ],
+    "additionalProperties": false
+}

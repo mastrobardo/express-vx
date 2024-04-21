@@ -1,0 +1,38 @@
+{
+    "$id": "https://vx.scnd.com/schemas/attribute-sets/salary-expectation",
+    "type": "object",
+    "properties": {
+        "daily_rate": {
+            "$ref": "https://vx.scnd.com/schemas/base/money#/price",
+            "label": "Expected Daily Rate"
+        },
+        "hide_rate": {
+            "type": "boolean",
+            "label": "I don't want to show my rate"
+        },
+        "design_level": {
+            "type": "object",
+            "label": "What is your Design Level?",
+            "properties": {
+                "design": {
+                    "$ref": "https://vx.scnd.com/schemas/base/system#/rating-1-to-5",
+                    "label": "Design"
+                },
+                "atmosphere": {
+                    "$ref": "https://vx.scnd.com/schemas/base/system#/rating-1-to-5",
+                    "label": "Atmosphere"
+                }
+            },
+            "required": [
+                "design",
+                "atmosphere"
+            ]
+        }
+    },
+    "required": [
+        "daily_rate",
+        "hide_rate",
+        "design_level"
+    ],
+    "additionalProperties": false
+}

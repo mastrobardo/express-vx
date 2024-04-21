@@ -1,0 +1,31 @@
+{
+    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/project-info",
+    "type": "object",
+    "properties": {
+        "categories": {
+            "type": "array",
+            "items": {
+                "$ref": "https://vx.scnd.com/schemas/base/system#/category"
+            }
+        },
+        "title": {
+            "type": "string"
+        },
+        "introduction": {
+            "type": "string"
+        },
+        "files": {
+            "type": "array",
+            "items": {
+                "$ref": "https://vx.scnd.com/schemas/base/assets#/file-id"
+            }
+        }
+    },
+    "required": [
+        "categories",
+        "title",
+        "introduction",
+        "files"
+    ],
+    "additionalProperties": false
+}

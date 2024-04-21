@@ -1,0 +1,41 @@
+{
+    "$id": "https://vx.scnd.com/schemas/attribute-sets/profile/base-data",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100
+        },
+        "description": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 1000
+        },
+        "skills": {
+            "$ref": "https://vx.scnd.com/schemas/base/system#/tag-set",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": {
+                "minLength": 3,
+                "maxLength": 20
+            }
+        },
+        "image_id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "categories": {
+            "type": "array",
+            "items": {
+                "$ref": "https://vx.scnd.com/schemas/base/system#/category"
+            }
+        }
+    },
+    "required": [
+        "title",
+        "description",
+        "skills"
+    ],
+    "additionalProperties": false
+}

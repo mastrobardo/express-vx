@@ -1,0 +1,20 @@
+{
+    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/vendor-attributes",
+    "type": "object",
+    "properties": {
+        "vendor_categories": {
+            "$comment": "TODO: ideally we need to enforce vendor categories to be used here",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "format": "uuid"
+            }
+        },
+        "vendor_skills": {
+            "$comment": "TODO: ideally we need to enforce vendor skills to be used here",
+            "$ref": "https://vx.scnd.com/schemas/base/system#/tag-set"
+        }
+    },
+    "required": [],
+    "additionalProperties": false
+}

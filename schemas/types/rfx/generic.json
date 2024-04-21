@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://vx.scnd.com/schemas/types/rfx/generic",
+    "title": "Generic RFX",
+    "type": "object",
+    "properties": {
+        "schema": {
+            "type": "string",
+            "const": "https://vx.scnd.com/schemas/types/rfx/generic"
+        },
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "project_info": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/rfx/project-info"
+        },
+        "location": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/rfx/location"
+        },
+        "calendar": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/rfx/calendar"
+        },
+        "price": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/rfx/price"
+        },
+        "milestones": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/rfx/milestones"
+        },
+        "vendor_attributes": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/rfx/vendor-attributes"
+        },
+        "project_settings": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/rfx/project-settings"
+        }
+    },
+    "required": [
+        "schema"
+    ],
+    "additionalProperties": false
+}

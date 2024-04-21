@@ -1,0 +1,13 @@
+{
+    "$id": "https://vx.scnd.com/schemas/attribute-sets/hub/org-base-data",
+    "type": "object",
+    "properties": {
+        "company_name": {
+            "$ref": "https://vx.scnd.com/schemas/base/system#/name"
+        }
+    },
+    "required": [
+        "company_name"
+    ],
+    "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+{
+    "$id": "https://vx.scnd.com/schemas/types/hub/clan",
+    "title": "Hub",
+    "type": "object",
+    "properties": {
+        "schema": {
+            "type": "string",
+            "const": "https://vx.scnd.com/schemas/types/hub/clan"
+        },
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "clan_base_data": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/hub/clan-base-data"
+        }
+    },
+    "required": [
+        "schema", "clan_base_data"
+    ],
+    "additionalProperties": false
+}

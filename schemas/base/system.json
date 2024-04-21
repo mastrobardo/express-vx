@@ -1,0 +1,41 @@
+{
+    "$id": "https://vx.scnd.com/schemas/base/system",
+    "language": {
+        "$id": "#/language",
+        "type": "string"
+    },
+    "languages": {
+        "$id": "#/languages",
+        "type": "array",
+        "items": {
+            "$ref": "#/language"
+        }
+    },
+    "rating-1-to-5": {
+        "$id": "#/rating-1-to-5.json",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5
+    },
+    "tag-like": {
+        "$id": "#/tag-like",
+        "type": "string"
+    },
+    "tag-set": {
+        "$id": "#/tag-set",
+        "type": "array",
+        "items": {
+            "$ref": "#/tag-like"
+        }
+    },
+    "name": {
+        "$id": "#/name",
+        "type": "string",
+        "minimum": 1
+    },
+    "category": {
+        "$id": "#/category",
+        "type": "string",
+        "format": "uuid"
+    }
+}

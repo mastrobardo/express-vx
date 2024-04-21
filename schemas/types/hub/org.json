@@ -1,0 +1,22 @@
+{
+    "$id": "https://vx.scnd.com/schemas/types/hub/org",
+    "title": "Hub",
+    "type": "object",
+    "properties": {
+        "schema": {
+            "type": "string",
+            "const": "https://vx.scnd.com/schemas/types/hub/org"
+        },
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "org_base_data": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/hub/org-base-data"
+        }
+    },
+    "required": [
+        "schema"
+    ],
+    "additionalProperties": false
+}

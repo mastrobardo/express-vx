@@ -1,0 +1,16 @@
+{
+    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/price",
+    "type": "object",
+    "properties": {
+        "price": {
+            "$ref": "https://vx.scnd.com/schemas/base/money#/price"
+        },
+        "information": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "information"
+    ],
+    "additionalProperties": false
+}

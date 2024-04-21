@@ -1,0 +1,33 @@
+{
+    "$id": "https://vx.scnd.com/schemas/types/vendor/profile/designer",
+    "title": "Designer Profile",
+    "type": "object",
+    "properties": {
+        "schema": {
+            "type": "string",
+            "const": "https://vx.scnd.com/schemas/types/vendor/profile/designer"
+        },
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "base_data": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/profile/base-data"
+        },
+        "salary_expectations": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/salary-expectations"
+        },
+        "design_inspiration": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/design-inspiration"
+        },
+        "catchment_areas": {
+            "$ref": "https://vx.scnd.com/schemas/attribute-sets/areas",
+            "description": "The areas the designer is willing to work in",
+            "minItems": 1
+        }
+    },
+    "required": [
+        "schema"
+    ],
+    "additionalProperties": false
+}

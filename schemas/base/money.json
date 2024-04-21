@@ -1,0 +1,24 @@
+{
+    "$id": "https://vx.scnd.com/schemas/base/money",
+    "currency": {
+        "$id": "#/currency",
+        "type": "string",
+        "pattern": "^[A-Z]{3}$"
+    },
+    "price": {
+        "$id": "#/price",
+        "type": "object",
+        "properties": {
+            "currency": {
+                "$ref": "#/currency"
+            },
+            "amount": {
+                "type": "number"
+            }
+        },
+        "required": [
+            "currency",
+            "amount"
+        ]
+    }
+}

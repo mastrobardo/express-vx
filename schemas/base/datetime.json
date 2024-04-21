@@ -1,0 +1,25 @@
+{
+    "$id": "https://vx.scnd.com/schemas/base/datetime",
+    "date": {
+        "$id": "#/date",
+        "type": "string",
+        "format": "date"
+    },
+    "date-interval": {
+        "$id": "#/date-interval",
+        "type": "object",
+        "properties": {
+            "start_date": {
+                "$ref": "#/date"
+            },
+            "end_date": {
+                "$ref": "#/date"
+            }
+        },
+        "required": [
+            "start_date",
+            "end_date"
+        ],
+        "additionalProperties": false
+    }
+}
