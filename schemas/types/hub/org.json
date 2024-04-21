@@ -16,7 +16,7 @@
         }
     },
     "required": [
-        "schema"
+        "schema", "org_base_data"
     ],
-    "additionalProperties": false
+    "additionalProperties": true
 }
