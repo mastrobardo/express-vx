@@ -1,4 +1,4 @@
-curl -X POST https://example.com/hubs/ \
+curl -X POST http://localhost:3000/hubs/ \
 -H "Content-Type: application/json" \
 -d '{
     "schema": "https://vx.scnd.com/schemas/types/hub/hub",
