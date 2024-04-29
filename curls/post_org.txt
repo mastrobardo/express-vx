@@ -1,9 +1,9 @@
 curl -X POST http://localhost:3000/hubs/ \
 -H "Content-Type: application/json" \
 -d '{
-    "schema": "https://vx.scnd.com/schemas/types/hub/hub",
+    "schema": "/schemas/types/hub/hub",
     "data": {
-        "schema": "https://vx.scnd.com/schemas/types/hub/org",
+        "schema": "/schemas/types/hub/org",
         "id": "123e4567-e89b-12d3-a456-426614175050",
         "org_base_data": {
             "company_name": "Example Org Name"

@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports = (ajv, GenericModel) => {
   const router = express.Router();
-  const schemaId = "https://vx.scnd.com/schemas/types/hub/hub";
+  const schemaId = "/schemas/types/hub/hub";
 
   /**
    * @swagger
@@ -23,7 +23,7 @@ module.exports = (ajv, GenericModel) => {
    *               schema:
    *                 type: string
    *                 description: Schema URL
-   *                 example: "https://vx.scnd.com/schemas/types/hub/org"
+   *                 example: "/schemas/types/hub/org"
    *               data:
    *                 type: object
    *                 description: Data to be validated and stored
@@ -105,7 +105,7 @@ module.exports = (ajv, GenericModel) => {
    *                   schema:
    *                     type: string
    *                     description: The hub's schema URL, indicating its type.
-   *                     example: "https://vx.scnd.com/schemas/types/hub/clan"
+   *                     example: "/schemas/types/hub/clan"
    *                   data:
    *                     type: object
    *                     description: The hub's data.

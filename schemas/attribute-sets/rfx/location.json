@@ -1,5 +1,6 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/location",
+    "$id": "/schemas/attribute-sets/rfx/location",
+    "title": "Location",
     "type": "object",
     "properties": {
         "remote_enable": {
@@ -8,11 +9,11 @@
         "reception_locations": {
             "type": "array",
             "items": {
-                "$ref": "https://vx.scnd.com/schemas/base/spatial#/location"
+                "$ref": "/schemas/base/spatial#/location"
             }
         },
         "travel_area": {
-            "$ref": "https://vx.scnd.com/schemas/base/spatial#/area"
+            "$ref": "/schemas/base/spatial#/area"
         }
     },
     "required": [

@@ -1,7 +1,7 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/areas",
+    "$id": "/schemas/attribute-sets/areas",
     "type": "array",
     "items": {
-        "$ref": "https://vx.scnd.com/schemas/base/spatial#/area"
+        "$ref": "/schemas/base/spatial#/area"
     }
 }

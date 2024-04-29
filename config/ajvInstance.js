@@ -1,11 +1,11 @@
-const Ajv = require('ajv/dist/2019');
+const Ajv2020 = require("ajv/dist/2020")
 const addFormats = require('ajv-formats');
 const path = require("path");
 const fs = require("fs");
 
-const ajv = new Ajv({ allErrors: true, strict: false });
+const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
-// ajv.addSchema(require('../schemas/attribute-sets/profile/salary-expectations.json'), 'https://vx.scnd.com/schemas/attribute-sets/salary-expectations');
+// ajv.addSchema(require('../schemas/attribute-sets/profile/salary-expectations.json'), '/schemas/attribute-sets/salary-expectations');
 
 function loadSchemas(dir) {
     let schemas = {};

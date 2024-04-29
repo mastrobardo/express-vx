@@ -80,7 +80,7 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
    *       500:
    *         description: Failed to save the document.
    */
-  router.post("/", validateSchemaGroup("profiles"), async (req, res) => {
+  router.post("/", async (req, res) => {
     const { schema, ...data } = req.body;
   
     if (!schema) {
@@ -88,6 +88,7 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
     }
   
     const validate = ajv.getSchema(schema);
+    console.log(schema)
     if (!validate) {
       return res.status(400).send({
         error: {
@@ -259,7 +260,7 @@ module.exports = (ajv, loadedSchemas, GenericModel) => {
    *       500:
    *         description: Server error.
    */
-  router.patch("/:id", validateSchemaGroup("profiles"), async (req, res) => {
+  router.patch("/:id", async (req, res) => {
     const { schema, ...updateData } = req.body;
 
     const validate = ajv.getSchema(schema);

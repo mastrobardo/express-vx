@@ -1,75 +1,33 @@
 {
-    "$id": "https://vx.scnd.com/schemas/types/vendor/profile/designer",
+    "$id": "/schemas/types/vendor/profile/designer",
     "title": "Designer Profile",
     "type": "object",
-    "group": "profiles",
     "properties": {
-      "schema": {
-        "type": "string",
-        "const": "https://vx.scnd.com/schemas/types/vendor/profile/designer"
-      },
-      "id": {
-        "type": "string",
-        "format": "uuid"
-      },
-      "base_data": {
-        "$ref": "https://vx.scnd.com/schemas/attribute-sets/profile/base-data"
-      },
-      "salary_expectations": {
-        "type": "object",
-        "properties": {
-          "daily_rate": {
-            "type": "object",
-            "properties": {
-              "amount": {
-                "type": "number"
-              },
-              "currency": {
-                "type": "string"
-              }
-            },
-            "required": ["amount", "currency"],
-            "additionalProperties": false
-          },
-          "hide_rate": {
-            "type": "boolean"
-          },
-          "design_level": {
-            "type": "object",
-            "properties": {
-              "design": {
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 5
-              },
-              "atmosphere": {
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 5
-              }
-            },
-            "required": ["design", "atmosphere"],
-            "additionalProperties": false
-          }
+        "schema": {
+            "type": "string",
+            "const": "/schemas/types/vendor/profile/designer"
         },
-        "required": ["daily_rate", "hide_rate", "design_level"],
-        "additionalProperties": false
-      },
-      "design_inspiration": {
-        "$ref": "https://vx.scnd.com/schemas/attribute-sets/design-inspiration"
-      },
-      "catchment_areas": {
-        "$ref": "https://vx.scnd.com/schemas/attribute-sets/areas",
-        "description": "The areas the designer is willing to work in",
-        "minItems": 1
-      }
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "base_data": {
+            "$ref": "/schemas/attribute-sets/profile/base-data"
+        },
+        "salary_expectations": {
+            "$ref": "/schemas/attribute-sets/profile/salary-expectations"
+        },
+        "design_inspiration": {
+            "$ref": "/schemas/attribute-sets/profile/design-inspiration"
+        },
+        "catchment_areas": {
+            "$ref": "/schemas/attribute-sets/areas",
+            "description": "The areas the designer is willing to work in",
+            "minItems": 1
+        }
     },
     "required": [
-      "schema",
-      "id",
-      "base_data",
-      "salary_expectations"
+        "schema"
     ],
-    "additionalProperties": true
-  }
-  
+    "additionalProperties": false
+}

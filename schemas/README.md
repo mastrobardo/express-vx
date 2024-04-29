@@ -24,13 +24,15 @@ base/
   - system.json (for now a catch-all for other types)
 types/
   - vendor/
-    - hub/
-      - clan.json
-      - org.json
+    - profile.json (collects all profile types in a oneOf (could be auto-generated later))
     - profile/
       - designer.json
-    - rfx/
-      - generic.json
+  - hub.json (collects all hub types in a oneOf)
+  - hub/
+    - clan.json
+    - org.json
+  - rfx/
+    - generic.json
 ```
 
  * Schemas in `base` are fixed (by us) and provide base data types that can be used as components in attribute sets. Each file is considered

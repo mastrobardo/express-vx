@@ -1,9 +1,10 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/hub/org-base-data",
+    "$id": "/schemas/attribute-sets/hub/org-base-data",
+    "title": "Organization Base Data",
     "type": "object",
     "properties": {
         "company_name": {
-            "$ref": "https://vx.scnd.com/schemas/base/system#/name"
+            "$ref": "/schemas/base/system#/name"
         }
     },
     "required": [

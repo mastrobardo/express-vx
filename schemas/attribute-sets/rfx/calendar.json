@@ -1,11 +1,12 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/calendar",
+    "$id": "/schemas/attribute-sets/rfx/calendar",
+    "title": "Calendar",
     "type": "object",
     "properties": {
         "mission_dates": {
             "oneOf": [
                 {
-                    "$ref": "https://vx.scnd.com/schemas/base/datetime#/date-interval"
+                    "$ref": "/schemas/base/datetime#/date-interval"
                 },
                 {
                     "type": "array",

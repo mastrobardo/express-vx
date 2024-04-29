@@ -1,5 +1,6 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/vendor-attributes",
+    "$id": "/schemas/attribute-sets/rfx/vendor-attributes",
+    "title": "Vendor Attributes",
     "type": "object",
     "properties": {
         "vendor_categories": {
@@ -12,7 +13,7 @@
         },
         "vendor_skills": {
             "$comment": "TODO: ideally we need to enforce vendor skills to be used here",
-            "$ref": "https://vx.scnd.com/schemas/base/system#/tag-set"
+            "$ref": "/schemas/base/system#/tag-set"
         }
     },
     "required": [],

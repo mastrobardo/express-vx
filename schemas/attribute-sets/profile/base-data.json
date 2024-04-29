@@ -1,5 +1,6 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/profile/base-data",
+    "$id": "/schemas/attribute-sets/profile/base-data",
+    "title": "Profile Base Data",
     "type": "object",
     "properties": {
         "title": {
@@ -13,7 +14,7 @@
             "maxLength": 1000
         },
         "skills": {
-            "$ref": "https://vx.scnd.com/schemas/base/system#/tag-set",
+            "$ref": "/schemas/base/system#/tag-set",
             "minItems": 1,
             "maxItems": 5,
             "items": {
@@ -28,7 +29,7 @@
         "categories": {
             "type": "array",
             "items": {
-                "$ref": "https://vx.scnd.com/schemas/base/system#/category"
+                "$ref": "/schemas/base/system#/category"
             }
         }
     },

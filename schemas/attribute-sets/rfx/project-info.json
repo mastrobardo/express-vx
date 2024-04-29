@@ -1,11 +1,12 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/project-info",
+    "$id": "/schemas/attribute-sets/rfx/project-info",
+    "title": "RFX Project Info",
     "type": "object",
     "properties": {
         "categories": {
             "type": "array",
             "items": {
-                "$ref": "https://vx.scnd.com/schemas/base/system#/category"
+                "$ref": "/schemas/base/system#/category"
             }
         },
         "title": {
@@ -17,7 +18,7 @@
         "files": {
             "type": "array",
             "items": {
-                "$ref": "https://vx.scnd.com/schemas/base/assets#/file-id"
+                "$ref": "/schemas/base/assets#/file-id"
             }
         }
     },

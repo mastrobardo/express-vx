@@ -1,0 +1,13 @@
+{
+    "$id": "https://vx.scnd.com/schemas/types/vendor/hub",
+    "title": "Hub",
+    "type": "object",
+    "oneOf": [
+        {
+            "$ref": "hub/org"
+        },
+        {
+            "$ref": "hub/clan"
+        }
+    ]
+}

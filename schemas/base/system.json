@@ -1,5 +1,5 @@
 {
-    "$id": "https://vx.scnd.com/schemas/base/system",
+    "$id": "/schemas/base/system",
     "language": {
         "$id": "#/language",
         "type": "string"

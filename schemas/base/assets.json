@@ -1,0 +1,21 @@
+{
+    "id": "/schemas/base/assets",
+    "image-upload": {
+        "$id": "#/image-upload",
+        "type": "object",
+        "properties": {
+            "file-id": {
+                "$ref": "#/file-id"
+            }
+        },
+        "required": [
+            "id",
+            "description"
+        ]
+    },
+    "file-id": {
+        "$id": "#/file-id",
+        "type": "string",
+        "format": "uuid"
+    }
+}

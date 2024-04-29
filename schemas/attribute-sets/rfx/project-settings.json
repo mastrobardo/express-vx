@@ -1,9 +1,10 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/project-settings",
+    "$id": "/schemas/attribute-sets/rfx/project-settings",
+    "title": "RFX Project Settings",
     "type": "object",
     "properties": {
         "offers_end_date": {
-            "$ref": "https://vx.scnd.com/schemas/base/datetime#/date"
+            "$ref": "/schemas/base/datetime#/date"
         },
         "maximum_number_of_bids": {
             "type": "integer",

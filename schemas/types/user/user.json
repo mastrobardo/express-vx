@@ -5,7 +5,7 @@
     "properties": {
         "schema": {
             "type": "string",
-            "pattern": "https://vx.scnd.com/schemas/types/hub/(clan|org)"
+            "pattern": "https://vx.scnd.com/schemas/types/hub/user"
         },
         "id": {
             "type": "string",

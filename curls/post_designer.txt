@@ -1,7 +1,7 @@
 curl --location 'http://localhost:3000/listings' \
 --header 'Content-Type: application/json' \
 --data '{
-    "schema": "https://vx.scnd.com/schemas/types/vendor/profile/designer",
+    "schema": "/schemas/types/vendor/profile/designer",
     "id": "123e4567-e89b-12d3-a456-426614174001",
     "base_data": {
         "title": "Senior UX Designer",

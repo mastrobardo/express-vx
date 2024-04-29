@@ -1,5 +1,6 @@
 {
-    "$id": "https://vx.scnd.com/schemas/attribute-sets/rfx/milestones",
+    "$id": "/schemas/attribute-sets/rfx/milestones",
+    "title": "Milestones",
     "type": "object",
     "properties": {
         "milestones": {
@@ -16,7 +17,7 @@
                     "files": {
                         "type": "array",
                         "items": {
-                            "$ref": "https://vx.scnd.com/schemas/base/assets#/file-id"
+                            "$ref": "/schemas/base/assets#/file-id"
                         }
                     }
                 },
